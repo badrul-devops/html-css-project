@@ -8,13 +8,6 @@ pipeline {
             
             }
         }
-        stage('sonarqube') {
-            steps {
-                withSonarQubeEnv(installationName: 'sonar') {
-                    sh 'sonar-scanner'
-                   }
-            }
-        }
         stage('Build') {
             steps {
                 sh 'docker build -t badrul11/html-css-project .'
