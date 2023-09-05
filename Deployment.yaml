@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  instra
+  namespace: default
+  labels:
+    app:  instra
+spec:
+  selector:
+    matchLabels:
+      app: instra
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  instra
+    spec:
+      containers:
+      - name:  instra
+        image:  badrul11/html-css-project:latest
+        ports:
+        - containerPort:  80
+          name:  instra

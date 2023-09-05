@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: instra
+  namespace: default
+spec:
+  selector:
+    app: instra
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: instra
+    protocol: TCP
+    port: 80
+    targetPort: 80

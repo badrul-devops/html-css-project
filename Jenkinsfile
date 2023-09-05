@@ -10,12 +10,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t badrul11/html-css-project .'
+                sh 'docker build -t  $DOCKERUSER/html-css-project .'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'docker push badrul11/html-css-project'
+        stage('Push') {
+            steps {<
+                sh 'docker login -u $DOCKERUSER -p $DOCKERPASS'
+                sh 'docker push $DOCKERUSER/html-css-project '
             }
         }
     }
